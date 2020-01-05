@@ -26,7 +26,7 @@ def get_tweets(hashtags):
                         'User Name': info.user.name,
                         'Tweet': info.full_text,
                         'Tweet Created At': (str(info.created_at)),
-                        'Country': info.user.location,
+                        'Language': info.metadata['iso_language_code'],
                         'Followers Count': info.user.followers_count
                 
                 }

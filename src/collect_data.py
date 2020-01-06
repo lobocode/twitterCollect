@@ -2,7 +2,7 @@ import os
 import sys
 import json
 from oauth import *
-from mongoconfig import *
+from mongo_config import *
 
 # Function for collect tweets
 def get_tweets(hashtags): 

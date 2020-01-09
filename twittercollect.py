@@ -7,6 +7,9 @@ if __name__ == '__main__':
     
     # collect data 
     tags=['#openbanking','#apifirst','#devops','#cloudfirst','#microservices','#apigateway','#oauth', '#swagger','#raml','#openapis']
+    
+    print('\nCollecting twitter data...\n')
+    
     for hashtags in tags:
          pdatabase = CollectData(100, -1, hashtags)
          pdatabase.get_tweets()  

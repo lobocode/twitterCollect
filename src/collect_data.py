@@ -1,8 +1,8 @@
 import os
 import sys
 import json
-from oauth import *
-from mongo_config import *
+from src import oauth
+from src import mongo_config as mgc
 
 class CollectData():
     
@@ -19,7 +19,7 @@ class CollectData():
     def get_tweets(self): 
             
             # Search only new tweets with api.search
-            api_search = api.search(q=self.hashtags, count=self.number_of_tweets, show_user=True, include_rts=False,tweet_mode='extended', include_entities=True, max_id=str(self.last_id), since='2019-01-01')
+            api_search = oauth.api.search(q=self.hashtags, count=self.number_of_tweets, show_user=True, include_rts=False,tweet_mode='extended', include_entities=True, max_id=str(self.last_id), since='2019-01-01')
 
             for info in api_search:
 
@@ -43,17 +43,6 @@ class CollectData():
                     datajson = json.loads(mongo_data_json)
 
                     # Insert json into mongo
-                    db.twitter_search.insert_one(datajson)
-    
-# Call code
-if __name__ == '__main__': 
-    
-    # collect data 
-    tags=['#openbanking','#apifirst','#devops','#cloudfirst','#microservices','#apigateway','#oauth', '#swagger','#raml','#openapis']
-    for hashtags in tags:
-         pdatabase = CollectData(100, -1, hashtags)
-         pdatabase.get_tweets()  
+                    mgc.db.twitter_search.insert_one(datajson)
 
-# Test post one tweet 
-#api.update_status("OI!")
 

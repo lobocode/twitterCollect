@@ -1,10 +1,10 @@
 # Import tweepy lib and keys
 import tweepy as twe
-from keys import *
+from src import keys
 
 # OAuth tweepy Twitter API
-auth = twe.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = twe.OAuthHandler(keys.consumer_key, keys.consumer_secret)
+auth.set_access_token(keys.access_token, keys.access_token_secret)
 api = twe.API(auth, wait_on_rate_limit=True)
 
 # test authentication

@@ -28,4 +28,4 @@ EXPOSE 5000 3000
 
 # Run the application:
 #COPY myapp.py .
-CMD ["/env/bin/python", "app.py"]
+CMD ["/env/bin/python", "twittercollect.py"]

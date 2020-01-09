@@ -1,8 +1,7 @@
 from pymongo import MongoClient
 
-
 # Assuming you have mongoDB installed locally
-mongo_host= ('mongodb://localhost/twitterdb')
+mongo_host = ('mongodb://admin:admin@localhost/twitterdb?authSource=admin')
 
 client = MongoClient(mongo_host)
 

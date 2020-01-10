@@ -68,3 +68,59 @@ for z,y in zip(twe, hrs):
 # c question #######################################################################################
 ####################################################################################################
 ####################################################################################################
+
+find_aggr_by_flag = collection.aggregate([
+    { "$project": 
+        {
+            "hashtag": "$hashtag",
+            "language": "$language"
+        },
+    }])
+
+
+
+convert_agrr_to_list = list(find_aggr_by_flag)
+
+encoder_aggr_list = JSONEncoder().encode(convert_agrr_to_list)
+
+load_json_aggr_list = json.loads(encoder_aggr_list)
+
+
+split_lang = [] 
+split_hashtags = [] 
+
+for x in load_json_aggr_list:
+    split_lang.append(x['language'])
+    
+
+for y in load_json_aggr_list:
+    split_hashtags.append(y['hashtag'])
+
+#print(split_hashtags)
+  
+lang = []
+twe_flag = list(set(split_lang))
+twe_hash = list(set(split_hashtags))
+
+for x in twe_flag:
+    lang.append(split_lang.count(x))
+    
+group_list_by_flag = []   
+     
+for x,y,z in zip(twe_hash, lang, twe_flag):   
+    c_question = {
+        'hashtag': x,
+        'language': z,
+        'total': y
+    }   
+    
+    group_list_by_flag.append(c_question)
+
+    
+"""    
+    {
+        'hashtag': #devops
+        'language': it
+        'total': 20
+    }
+ """   

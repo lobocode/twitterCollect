@@ -13,6 +13,14 @@ sudo curl -sSL https://get.docker.com/ | sh
 sudo curl -L --fail https://github.com/docker/compose/releases/download/1.25.0/run.sh -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
 ```
 
+### Install venv
+
+```
+pip3 install virtualenv --user && virtualenv /path/to/apop/twitterCollect .venv
+```
+
+
+
 ---
 
 ### How to install
@@ -21,18 +29,25 @@ sudo curl -L --fail https://github.com/docker/compose/releases/download/1.25.0/r
 1. Clone project repo and enter the project folder:
 
 ```
-git clone https://github.com/lobocode/twitterCollect && cd twitterCollect
+git clone https://github.com/lobocode/twitterCollect && cd twitterCollect && pip install -r requirements
 ```
 
-2. Enter the docker directory and run the following command:
+2. Enter the docker directory and run the following command to install mongodb and mongo express:
+
 ```
 docker-compose up -d 
 ```
 
-Or if you prefer an easier way, just run the command below:
+3. Enable venv
 
 ```
-curl -s url | sudo bash
+source .venv/bin/activate
+```
+
+4. RUn the app
+
+```
+python twittercollect.py
 ```
 
 ---
@@ -42,5 +57,5 @@ curl -s url | sudo bash
 Access with your browser the following url:
 
 ```
-localhost:3000/twittercollect
+localhost:5000/twittercollect
 ```

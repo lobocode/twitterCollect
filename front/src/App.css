@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+  background-color: #37474F;
+  padding: 20px;
+  width: 100%;
+  color: #ECEFF1;
+}
+
+.divider{
+  width: 100%;
+  border: 1px solid gray;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

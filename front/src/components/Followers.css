@@ -1,0 +1,24 @@
+
+.followers{
+    text-align: center;
+}
+
+h2 {
+    margin: 20px;
+}
+
+table {
+    margin-top: 20px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+tr, td, th, table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td, th {
+
+    padding: 5px;
+}

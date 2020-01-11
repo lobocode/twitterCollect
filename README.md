@@ -13,12 +13,17 @@ sudo curl -sSL https://get.docker.com/ | sh
 sudo curl -L --fail https://github.com/docker/compose/releases/download/1.25.0/run.sh -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-### Install venv
+Install python virtual env
 
 ```
 pip3 install virtualenv --user && virtualenv /path/to/apop/twitterCollect .venv
 ```
 
+Install nodejs
+
+```
+pip install nodejs 
+```
 
 
 ---
@@ -65,7 +70,7 @@ localhost:3000/api/group-hrs
 Access frontEnd:
 
 ```
-cd front && npm run build && npm install -g serve && serve -s build
+cd front && sudo npm run build && npm install -g serve && serve -s build
 ```
 
 And now open in your web browser:
@@ -73,4 +78,7 @@ And now open in your web browser:
 ```
 localhost:5000
 ```
+
+And access
+
 

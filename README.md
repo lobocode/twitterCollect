@@ -25,7 +25,6 @@ Install nodejs
 pip install nodejs 
 ```
 
-
 ---
 
 ### How to install
@@ -79,6 +78,10 @@ And now open in your web browser:
 localhost:5000
 ```
 
-And access
+As you can see below:
+
+![tcollect](https://raw.githubusercontent.com/lobocode/twitterCollect/master/img/tcollect.png)
+
+
 
 

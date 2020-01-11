@@ -5,10 +5,8 @@ from flask import Flask, jsonify
 from src import logic_db
 from flask_cors import CORS, cross_origin
 
-# Prometheus exporter lib
-from prometheus_flask_exporter import PrometheusMetrics
-
 app = Flask(__name__)
+
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
@@ -21,8 +19,7 @@ def get_find_fl():
 def get_group_by_hr():
     return jsonify(logic_db.group_list_by_hours)
 
-
-@app.route('/api/group-lang', methods=['GET'])
-def get_group_by_lang():
-    return jsonify(logic_db.group_list_by_flag)
+#@app.route('/api/group-lang', methods=['GET'])
+#def get_group_by_lang():
+#    return jsonify(logic_db.group_lang)
 

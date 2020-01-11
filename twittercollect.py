@@ -16,6 +16,3 @@ if __name__ == '__main__':
          
     # run REST API
     app.run(debug=True)
-
-# Test post one tweet 
-#api.update_status("OI!")

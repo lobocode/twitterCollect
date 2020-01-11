@@ -3,6 +3,7 @@ import sys
 import json
 from src import oauth
 from src import mongo_config as mgc
+from src import logic_db as ldb
 
 class CollectData():
     

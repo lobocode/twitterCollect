@@ -8,7 +8,14 @@ import json
 collection = mongo_config.db['twitter_search']
 
 # The five users with the most followers
-find_fl = collection.find({}, {"followers_count": 1, "user_name": 1}).limit(5).sort("followers_count", -1)
+#find_fl = collection.find({}, {"followers_count": 1, "user_name": 1}).limit(5).sort("followers_count", -1)
+
+find_fl = collection.aggregate([
+{ '$group': {'_id': {"user_name": "$user_name", "followers_count":"$followers_count"}}},
+{ '$sort' : { "_id.followers_count": -1 } },
+{ '$limit': 5}
+])
+
 
 # mongodata into list
 five_most_list = list(find_fl)
@@ -64,63 +71,4 @@ for z,y in zip(twe, hrs):
     }
     group_list_by_hours.append(b_question)
     
-    
-# c question #######################################################################################
-####################################################################################################
-####################################################################################################
 
-find_aggr_by_flag = collection.aggregate([
-    { "$project": 
-        {
-            "hashtag": "$hashtag",
-            "language": "$language"
-        },
-    }])
-
-
-
-convert_agrr_to_list = list(find_aggr_by_flag)
-
-encoder_aggr_list = JSONEncoder().encode(convert_agrr_to_list)
-
-load_json_aggr_list = json.loads(encoder_aggr_list)
-
-
-split_lang = [] 
-split_hashtags = [] 
-
-for x in load_json_aggr_list:
-    split_lang.append(x['language'])
-    
-
-for y in load_json_aggr_list:
-    split_hashtags.append(y['hashtag'])
-
-#print(split_hashtags)
-  
-lang = []
-twe_flag = list(set(split_lang))
-twe_hash = list(set(split_hashtags))
-
-for x in twe_flag:
-    lang.append(split_lang.count(x))
-    
-group_list_by_flag = []   
-     
-for x,y,z in zip(twe_hash, lang, twe_flag):   
-    c_question = {
-        'hashtag': x,
-        'language': z,
-        'total': y
-    }   
-    
-    group_list_by_flag.append(c_question)
-
-    
-"""    
-    {
-        'hashtag': #devops
-        'language': it
-        'total': 20
-    }
- """   

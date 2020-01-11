@@ -54,8 +54,23 @@ python twittercollect.py
 
 ### How to use
 
-Access with your browser the following url:
+Access API with your browser the following url:
 
 ```
-localhost:5000/twittercollect
+localhost:3000/api/show-fls
+localhost:3000/api/group-hrs
+
 ```
+
+Access frontEnd:
+
+```
+cd front && npm run build && npm install -g serve && serve -s build
+```
+
+And now open in your web browser:
+
+```
+localhost:5000
+```
+

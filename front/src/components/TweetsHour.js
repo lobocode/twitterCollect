@@ -16,7 +16,7 @@ export default class TweetsHour extends Component {
 
     componentDidMount() {
 
-        let url = 'http://10.0.0.103:5000/api/group-hrs'
+        let url = 'http://127.0.0.1:5000/api/group-hrs'
 
         fetch(url)
             .then(res => res.json())

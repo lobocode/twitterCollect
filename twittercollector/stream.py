@@ -4,8 +4,11 @@ from oauth import *
 from mongo_config import *
 from pymongo import MongoClient
  
+ """
+ This module is just for querying all the json that the standard twitter API returns to me.
+ """
  
-words = ['#bigdata', '#AI', '#datascience', '#machinelearning', '#ml', '#iot']
+tags=['#openbanking','#apifirst','#devops','#cloudfirst','#microservices','#apigateway','#oauth', '#swagger','#raml','#openapis']
 
 class StreamListener(tweepy.StreamListener):    
     #This is a class provided by tweepy to access the Twitter Streaming API. 
@@ -41,5 +44,5 @@ class StreamListener(tweepy.StreamListener):
 
 listener = StreamListener(api=tweepy.API(wait_on_rate_limit=True)) 
 streamer = tweepy.Stream(auth=auth, listener=listener)
-print("Tracking: " + str(words))
+print("Tracking: " + str(tags))
 streamer.filter(track=words)

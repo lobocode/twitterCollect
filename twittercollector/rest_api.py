@@ -17,7 +17,7 @@ def get_find_fl():
 
 @app.route('/api/group-hrs', methods=['GET'])
 def get_group_by_hr():
-    return jsonify(group_list_by_hours)
+    return jsonify(aggr_by_hr)
 
 #@app.route('/api/group-lang', methods=['GET'])
 #def get_group_by_lang():

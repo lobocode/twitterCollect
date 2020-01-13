@@ -26,36 +26,38 @@ json_format_fl = json.loads(dumps(list(find_fl)))
 
 # pymongo query to mongodb
 find_aggregate_by_hour = collection.aggregate([
-    {
-        "$addFields": {
-            "tweet_created_at": {
-                "$toDate": "$tweet_created_at"
-            }
-        }
-    },
-    {
-        "$project": {
-            "hours": {
-                "$hour": "$tweet_created_at"
-            }
-        }
-    },
-    { "$group" : {
-        "_id" : "$hours",
-        "count" : { "$sum" : 1
-                }
+  {
+    "$addFields": {
+      "tweet_created_at": {
+        "$toDate": "$tweet_created_at"
+      }
     }
-    },
-    { "$match" : {
-        "_id" : { "$gt" : 1
-              }
+  },
+  {
+    "$project": {
+      "hours": {
+        "$hour": "$tweet_created_at"
+      }
     }
+  },
+  {
+    "$group": {
+      "_id": "$hours",
+      "count": { "$sum": 1 }
     }
+  },
+  {
+    "$match": {
+      "_id": { "$gt": 1 }
+    }
+  },
+  {
+    "$sort": { "_id": -1, "count": 1 }
+  }
 ])
 
 # json_format_fl var convert cursor query in list, serialization bson, convert bson in json and deserialize
 aggr_by_hr = json.loads(dumps(list(find_aggregate_by_hour)))
-print(aggr_by_hr)
 
 
 # c question #######################################################################################

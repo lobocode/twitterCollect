@@ -44,9 +44,15 @@ class CollectData():
                     # Decode the JSON from Twitter
                     datajson = json.loads(mongo_data_json)
 
-                    # Insert json into mongo
-                    db.twitter_search.insert_one(datajson)
+                    try:
+                         # Insert json into mongo
+                        db.twitter_search.insert_one(datajson)
+                    except NameError:
+                        # if already exist collection, then drop
+                        app_collection.drop()
 
+                   
+                    
 # Call code 
 # collect data 
 tags=['#openbanking','#apifirst','#devops','#cloudfirst','#microservices','#apigateway','#oauth', '#swagger','#raml','#openapis']

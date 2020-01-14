@@ -30,6 +30,20 @@ curl -s https://raw.githubusercontent.com/lobocode/twitterCollect/develop/easy_i
 
 Access with your browser the following url:
 
+
+## API
+
+```bash
+http://localhost:5000/api/show-fls
+
+http://localhost:5000/api/group-hrs
+
+http://localhost:5000/api/group-lang
+
+```
+
+## frontEnd
+
 ```bash
 http://localhost:3000/twittercollect
 ```

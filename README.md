@@ -1,15 +1,18 @@
-# twitterCollect
+# twitterCollector
+
 A data filtering tool
 
-### Prerequisites
+## Prerequisites
 
-* To install twittercollector, you need to run it on Linux preferably some popular distribution like (debian, ubuntu or centos).
+* To install twittercollector, you need to run it on Linux preferably some popular distribution like (Debian, Ubuntu or CentOs).
 * This application depends on:
+  * Docker 
   * Mongodb
   * Elasticsearch
   * Graylog
   * Python3
   * Flask
+  * Nodejs
 
 ---
 
@@ -17,7 +20,7 @@ A data filtering tool
 
 Just run the command below:
 
-```
+```bash
 curl -s https://raw.githubusercontent.com/lobocode/twitterCollect/develop/easy_install.sh | sudo bash
 ```
 
@@ -27,6 +30,6 @@ curl -s https://raw.githubusercontent.com/lobocode/twitterCollect/develop/easy_i
 
 Access with your browser the following url:
 
-```
-localhost:3000/twittercollect
+```bash
+http://localhost:3000/twittercollect
 ```

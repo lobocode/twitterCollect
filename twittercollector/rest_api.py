@@ -7,30 +7,27 @@ from logic_db import *
 from mongo_config import *
 from flask_cors import CORS, cross_origin
 
-# Get logger
-def buildLogging():
-    log = logging.getLogger('werkzeug')
-    log.setLevel(logging.INFO)
-    handler = graypy.GELFUDPHandler('localhost', 12201)
-    log.addHandler(handler)
+# Get logger with graylog handler
+log = logging.getLogger()
+handler = graypy.GELFUDPHandler('localhost', 12201)
+log.addHandler(handler)
 
 app = Flask(__name__)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-buildLogging()
-
 # Route from question a
 @app.route('/api/show-fls', methods=['GET'])
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def get_find_fl():
-    app.logger.info('info')
+    log.info('info')
     return jsonify(list_aggr_fl)
 
 # Route from question b
 @app.route('/api/group-hrs', methods=['GET'])
 def get_group_by_hr():
-    app.logger.info('info')
+    #log.info('testando aggr by hour')
+    #app.logger.info('info')
     return jsonify(list_aggr_by_hr)
 
 
@@ -44,10 +41,9 @@ def get_group_by_hr():
 # This function purposely calls an error (error 500).
 @app.route('/api/error', methods=['GET'])
 def get_error():
-    try:
-        return error # Doesn't exist this var
-    except NameError:
-        app.logger.error('An error occurred.', exc_info=1)
+    return error # Doesn't exist this var
+
+
 
 
 

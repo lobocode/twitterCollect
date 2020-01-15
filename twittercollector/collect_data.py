@@ -44,12 +44,11 @@ class CollectData():
                     # Decode the JSON from Twitter
                     datajson = json.loads(mongo_data_json)
 
-                    try:
-                         # Insert json into mongo
-                        db.twitter_search.insert_one(datajson)
-                    except NameError:
-                        # if already exist collection, then drop
-                        app_collection.drop()
+                    # Insert json into mongo
+                    db.twitter_search.insert_one(datajson)
+                    
+                    # if already exist collection, then drop
+                    app_collection.drop()
 
                    
                     

@@ -16,6 +16,8 @@ services:
   # Elasticsearch
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
     container_name: elasticsearch
     environment:
       - http.host=0.0.0.0
@@ -26,16 +28,14 @@ services:
       memlock:
         soft: -1
         hard: -1
-    deploy:
-      resources:
-        limits:
-          memory: 1g
     networks:
       - graylog
 
   # Graylog
   graylog:
     image: graylog/graylog:3.1
+    volumes:
+      - graylog_journal:/usr/share/graylog/data/journal
     container_name: graylog3
     environment:
       # CHANGE ME (must be at least 16 characters)

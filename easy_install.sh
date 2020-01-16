@@ -18,7 +18,7 @@ else
     curl -L --fail https://github.com/docker/compose/releases/download/1.25.0/run.sh -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
 
     echo -e "\Cloning repo\n"
-    git clone https://github.com/lobocode/twitterCollect && cd twitterCollect/docker
+    git clone https://github.com/lobocode/twitterCollect && cd twitterCollect
 
     echo -e "\Installing docker-compose\n"
     docker-compose up

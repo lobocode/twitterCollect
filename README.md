@@ -32,7 +32,12 @@ http://localhost:5000/api/group-lang
 
 ```bash
 http://localhost:3000/twittercollect
+
 ```
+
+## Logging
+
+![tcollect](https://raw.githubusercontent.com/lobocode/twitterCollect/master/img/graylog.png)
 
 
 As you can see below:

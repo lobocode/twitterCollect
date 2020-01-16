@@ -2,7 +2,11 @@
 
 A data filtering tool
 
+<<<<<<< HEAD
 ### How to install
+=======
+## How to install
+>>>>>>> develop
 
 Just run the command below:
 
@@ -12,7 +16,7 @@ curl -s https://raw.githubusercontent.com/lobocode/twitterCollect/develop/easy_i
 
 ---
 
-### How to use
+## How to use
 
 Access with your browser the following url:
 

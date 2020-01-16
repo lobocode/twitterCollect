@@ -2,11 +2,11 @@ version: "3"
 
 services:
 # My app
-app:
-  build:
-    context: app
-    ports:
-      - 5000:5000
+#app:
+#  build:
+#    context: app
+#    ports:
+#      - 5000:5000
 
 # Mongo 4.2
   mongo:

@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 .venv
 *.pyc
 front/node_modules
 .vscode
+||||||| f765ef6
+=======
+.venv
+.vscode
+>>>>>>> develop

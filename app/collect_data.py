@@ -1,9 +1,10 @@
 import os
 import sys
 import json
-from src import oauth
-from src import mongo_config as mgc
-from src import logic_db as ldb
+
+import oauth
+from mongo_config import *
+
 
 class CollectData():
     
@@ -44,6 +45,16 @@ class CollectData():
                     datajson = json.loads(mongo_data_json)
 
                     # Insert json into mongo
-                    mgc.db.twitter_search.insert_one(datajson)
+                    db.twitter_search.insert_one(datajson)
 
+                   
+                    
+# Call code 
+# collect data 
+tags=['#openbanking','#apifirst','#devops','#cloudfirst','#microservices','#apigateway','#oauth', '#swagger','#raml','#openapis']
 
+print('\nCollecting twitter data...\n')
+
+for hashtags in tags:
+    pdatabase = CollectData(100, -1, hashtags)
+    pdatabase.get_tweets() 

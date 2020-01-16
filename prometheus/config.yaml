@@ -2,7 +2,7 @@ global:
   scrape_interval:     3s
 
   external_labels:
-      monitor: 'twittercollector'
+      monitor: 'example-app'
 
 rule_files:
 
@@ -12,7 +12,7 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'twittercollector'
+  - job_name: 'example'
 
     dns_sd_configs:
       - names: ['app']

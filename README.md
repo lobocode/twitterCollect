@@ -31,15 +31,36 @@ http://localhost:5000/api/group-lang
 ## frontEnd
 
 ```bash
-http://localhost:3000/twittercollect
+http://localhost:8080/twittercollect
 
 ```
+
+As you can see below:
+
+![tcollect](https://raw.githubusercontent.com/lobocode/twitterCollect/master/img/tcollect.png)
+
 
 ## Logging
 
 ![tcollect](https://raw.githubusercontent.com/lobocode/twitterCollect/master/img/graylog.png)
 
+Access graylog url
 
-As you can see below:
+```bash
+http://localhost:9000
 
-![tcollect](https://raw.githubusercontent.com/lobocode/twitterCollect/master/img/tcollect.png)
+```
+
+## Monitoring with prometheus
+
+```bash
+http://localhost:9090
+
+```
+
+## Metrics with Graphics
+
+```bash
+http://localhost:3000
+
+```

@@ -5,12 +5,12 @@ services:
   app:
     build:
       context: app
+    container_name: app
     ports:
       - 5000:5000
     networks:
       - graylog
     
-
   # Mongo 4.2
   mongo:
     image: mongo:4.2
@@ -75,8 +75,10 @@ services:
   # Prometheus monitoring and metrics
   prometheus:
     image: prom/prometheus:latest
-    container_name: monitoring_prometheus
+    container_name: prometheus
     restart: unless-stopped
+    networks:
+      - graylog
     volumes:
       - ./prometheus/config.yaml:/etc/prometheus/prometheus.yml
     expose:
@@ -87,8 +89,10 @@ services:
   # Grafana graphics
   grafana:
     image: grafana/grafana:latest
-    container_name: monitoring_grafana
+    container_name: grafana
     restart: unless-stopped
+    networks:
+      - graylog
     volumes:
       - ./grafana/config.ini:/etc/grafana/grafana.ini
       - ./grafana/datasource.yaml:/etc/grafana/provisioning/datasources/default.yaml

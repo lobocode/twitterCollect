@@ -15,8 +15,8 @@ from flask_cors import CORS, cross_origin
 from flask_graylog import Graylog
 
 # Prometheus
-#from prometheus_client import make_wsgi_app
-#from flask_prometheus_metrics import register_metrics
+from prometheus_client import make_wsgi_app
+from flask_prometheus_metrics import register_metrics
 #from werkzeug.middleware.dispatcher import DispatcherMiddleware
 #from werkzeug.serving import run_simple
 
@@ -27,7 +27,7 @@ app = Flask(__name__)
 graylog = Graylog(app)
 
 # Get logger with graylog handler
-handler = graypy.GELFUDPHandler('localhost', 12201)
+handler = graypy.GELFUDPHandler('graylog', 12201)
 logger = logging.getLogger(__name__)
 logger.addHandler(graylog.handler)
 
@@ -65,11 +65,10 @@ def get_error():
     logger.error('An occurred error')
     return error  # Doesn't exist this var
 
-
 # Prometheus metrics
 @app.route('/metrics/')
 def metrics():
-    return 0
+    return ' '
 
 
 if __name__ == '__main__':

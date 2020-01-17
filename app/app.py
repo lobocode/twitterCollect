@@ -3,24 +3,21 @@ import time
 import graypy
 import logging
 import json
+import prometheus_client
 
 # libs
-from collect_data import *
-from flask import Flask, jsonify
+from collect_data import CollectData
+from flask import Flask, jsonify, request, Response
 from logic_db import *
 from mongo_config import *
 from flask_cors import CORS, cross_origin
 from flask_graylog import Graylog
-from prometheus_flask_exporter import PrometheusMetrics
 
 
 app = Flask(__name__)
 
 # Graylog
 graylog = Graylog(app)
-
-# Prometheus
-PrometheusMetrics(app)
 
 
 # Get logger with graylog handler
@@ -34,6 +31,7 @@ graylog.info('Message', extra={
 })
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 
 # Route from question a
 @app.route('/api/show-fls', methods=['GET'])
@@ -65,7 +63,6 @@ def get_error():
 
 
 if __name__ == '__main__':
-    
-    
+
     # run REST API
     app.run('0.0.0.0', 5000)

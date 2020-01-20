@@ -15,7 +15,7 @@ export default class Followers extends Component {
 
     componentDidMount() {
 
-        let url = 'http://127.0.0.1:3000/api/show-fls'
+        let url = 'http://localhost:5000/api/show-fls'
 
         fetch(url)
             .then(res => res.json())

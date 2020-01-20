@@ -15,7 +15,7 @@ export default class TagByLang extends Component {
 
     componentDidMount() {
 
-        let url = 'http://10.0.0.103:5000/api/group-lang'
+        let url = 'http://localhost:5000/api/group-lang'
 
         fetch(url)
             .then(res => res.json())

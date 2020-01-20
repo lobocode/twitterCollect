@@ -3,6 +3,8 @@ import time
 import graypy
 import logging
 import json
+import prometheus_client
+
 
 # My modules
 from collect_data import CollectData
@@ -14,14 +16,15 @@ from flask import Flask, jsonify, request, Response
 from flask_cors import CORS, cross_origin
 from flask_graylog import Graylog
 
-# Prometheus
-from prometheus_client import make_wsgi_app
-from flask_prometheus_metrics import register_metrics
-#from werkzeug.middleware.dispatcher import DispatcherMiddleware
-#from werkzeug.serving import run_simple
+# Prometheus metrics
+from metrics import setup_metrics
+
 
 # Flask app name
 app = Flask(__name__)
+
+# setup metrics
+setup_metrics(app)
 
 # Graylog
 graylog = Graylog(app)
@@ -38,6 +41,9 @@ graylog.info('Message', extra={
 
 # Cors authorization
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+# Content type
+CONTENT_TYPE_LATEST = str('text/plain; version=0.0.4; charset=utf-8')
 
 # Route from question a
 @app.route('/api/show-fls', methods=['GET'])
@@ -65,13 +71,15 @@ def get_error():
     logger.error('An occurred error')
     return error  # Doesn't exist this var
 
+
 # Prometheus metrics
 @app.route('/metrics/')
 def metrics():
-    return ' '
+    return Response(prometheus_client.generate_latest(), mimetype=CONTENT_TYPE_LATEST)
 
 
 if __name__ == '__main__':
 
     # run REST API
    app.run('0.0.0.0', 5000)
+   

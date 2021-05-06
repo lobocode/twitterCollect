@@ -5,7 +5,7 @@ Click==7.0
 datadog==0.33.0
 decorator==4.4.1
 Flask==1.1.1
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 Flask-Prometheus==0.0.1
 flask-prometheus-metrics==1.0.0
 graypy==2.1.0
